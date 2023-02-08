@@ -2,7 +2,9 @@ import React from "react";
 import "./post.css";
 import { MoreVert, ThumbUp, Favorite } from "@mui/icons-material";
 
-export default function Post() {
+export default function Post({ post }) {
+  console.log("desconstructed post object:", post);
+
   return (
     <>
       <div className="post">
@@ -14,29 +16,25 @@ export default function Post() {
                 alt=""
                 className="postProfileImg"
               />
-              <span className="postUserName">KLuhh</span>
-              <span className="postDate">5 Minutes Ago</span>
+              <span className="postUserName">{post.userName}</span>
+              <span className="postDate">{post.date}</span>
             </div>
             <div className="postTopRight">
               <MoreVert />
             </div>
           </div>
           <div className="postCenter">
-            <span className="postText">Hey! Its my first post</span>
-            <img
-              src={require("../assets/post_1.jpg")}
-              alt=""
-              className="postImg"
-            />
+            <span className="postText">{post.desc}</span>
+            <img src="" alt="" className="postImg" />
           </div>
           <div className="postBottom">
             <div className="postBottomLeft">
               <ThumbUp className="likeIconThumb" />
               <Favorite className="likeIconHeart" />
-              <span className="likeCounter">32 people liked this</span>
+              <span className="likeCounter">{post.like}</span>
             </div>
             <div className="postBottomRight">
-              <span className="postCommentText">9 Comments</span>
+              <span className="postCommentText">{post.comment} comments</span>
             </div>
           </div>
         </div>
